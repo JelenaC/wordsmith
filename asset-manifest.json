@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/wordsmith/static/css/main.073c9b0a.css",
+    "main.js": "/wordsmith/static/js/main.d375d264.js",
+    "static/js/787.cd9e18cc.chunk.js": "/wordsmith/static/js/787.cd9e18cc.chunk.js",
+    "static/media/logo.svg": "/wordsmith/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/wordsmith/index.html",
+    "main.073c9b0a.css.map": "/wordsmith/static/css/main.073c9b0a.css.map",
+    "main.d375d264.js.map": "/wordsmith/static/js/main.d375d264.js.map",
+    "787.cd9e18cc.chunk.js.map": "/wordsmith/static/js/787.cd9e18cc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.d375d264.js"
+  ]
+}
