@@ -32,7 +32,7 @@ describe("Sentence Converter Method Test", () => {
 describe("Sentence Converter Component Test", () => { 
     test ("Given a user input, and clicking on button should return reversed string", ()=>{
         render(<SentenceConverter/>);
-        const input = screen.getByPlaceholderText('placeholderito')
+        const input = screen.getByLabelText('Type sentence')
         fireEvent.change(input, {target: {value: 'Hello there'}})
         expect(input).toHaveValue('Hello there')
         const reverseButton = screen.getByText(/Reverse/i)

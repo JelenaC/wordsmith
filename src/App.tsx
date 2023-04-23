@@ -6,6 +6,7 @@ import { NotFound }  from './pages/NotFound'
 import { RequireAuth } from './pages/RequireAuth'
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { MySentences } from './pages/MySentences'
+import { MyProfile } from './pages/MyProfile'
 import useAuth from './hooks/useAuth'
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route index element={<ReverseSentence />} />
           <Route path="reverse-sentence" element={<ReverseSentence />} />
           <Route path="my-sentences" element={<MySentences />} />
+          <Route path="my-profile" element={<MyProfile />} />
         </Route>
         {/* display custom 404 */}
         <Route path='/404' element={<NotFound/>} />
