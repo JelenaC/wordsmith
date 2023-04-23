@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Login } from './pages/Login'
+import { Start } from './pages/Start'
+import { ReverseSentence } from './pages/ReverseSentence'
+import { Layout } from './pages/Layout'
+import { NotFound }  from './pages/NotFound'
+import { RequireAuth } from './pages/RequireAuth'
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { MySentences } from './pages/MySentences'
+import useAuth from './hooks/useAuth'
 
 function App() {
+  const { authToken } = useAuth()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      {/* A "layout route" is a good place to put markup you want to
+          share across all the pages on your site, like navigation. */}
+      <Route path="/" element={<Layout />}>
+        {/* public routes */}
+        <Route path="/login" element={(authToken && authToken!=='') ? <Navigate to="/reverse-sentence" replace /> : <Login />}/>
+        <Route index element={<Start />} />
+        {/* <Route path="start" element={<Start />} /> */}
+
+        {/* we want to protect these routes */}
+        <Route element={<RequireAuth/>}>
+          <Route index element={<ReverseSentence />} />
+          <Route path="reverse-sentence" element={<ReverseSentence />} />
+          <Route path="my-sentences" element={<MySentences />} />
+        </Route>
+        {/* catch all */}
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
 
-export default App;
+export default App
