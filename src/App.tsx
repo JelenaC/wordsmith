@@ -15,12 +15,12 @@ function App() {
       {/* A "layout route" is a good place to put markup you want to
           share across all the pages on your site, like navigation. */}
       <Route path="/" element={<Layout />}>
+
         {/* public routes */}
         <Route path="/login" element={(authToken && authToken!=='') ? <Navigate to="/reverse-sentence" replace /> : <Login />}/>
         <Route index element={<Start />} />
-        {/* <Route path="start" element={<Start />} /> */}
 
-        {/* we want to protect these routes */}
+        {/* protected routes */}
         <Route element={<RequireAuth/>}>
           <Route index element={<ReverseSentence />} />
           <Route path="reverse-sentence" element={<ReverseSentence />} />
