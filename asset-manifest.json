@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/wordsmith/static/css/main.e6c13ad2.css",
-    "main.js": "/wordsmith/static/js/main.48f6f2d7.js",
+    "main.js": "/wordsmith/static/js/main.e851b37b.js",
     "static/js/787.cd9e18cc.chunk.js": "/wordsmith/static/js/787.cd9e18cc.chunk.js",
     "index.html": "/wordsmith/index.html",
     "main.e6c13ad2.css.map": "/wordsmith/static/css/main.e6c13ad2.css.map",
-    "main.48f6f2d7.js.map": "/wordsmith/static/js/main.48f6f2d7.js.map",
+    "main.e851b37b.js.map": "/wordsmith/static/js/main.e851b37b.js.map",
     "787.cd9e18cc.chunk.js.map": "/wordsmith/static/js/787.cd9e18cc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.48f6f2d7.js"
+    "static/js/main.e851b37b.js"
   ]
 }
