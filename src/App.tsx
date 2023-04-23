@@ -26,8 +26,9 @@ function App() {
           <Route path="reverse-sentence" element={<ReverseSentence />} />
           <Route path="my-sentences" element={<MySentences />} />
         </Route>
-        {/* catch all */}
-        <Route path="*" element={<NotFound />} />
+        {/* display custom 404 */}
+        <Route path='/404' element={<NotFound/>} />
+        <Route path='*' element={<Navigate replace to='/404'/>} />
       </Route>
     </Routes>
   );
