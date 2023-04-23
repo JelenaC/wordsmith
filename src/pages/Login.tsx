@@ -1,89 +1,108 @@
-import { useRef, useState, useEffect } from 'react'
+import { useState, useEffect} from 'react'
 import useAuth from '../hooks/useAuth'
 import { useNavigate, useLocation } from 'react-router-dom'
 import axios from '../api/axios'
+import { LoginForm } from '../ui-components/LoginForm';
 
 const LOGIN_URL = '/login';
 
 function Login() {
-    const { setAuth, setAuthToken } = useAuth()
+    const { setAuthToken } = useAuth()
+    const [username, setUsername] = useState<string>('')
+    const [password, setpassword] = useState<string>('')
+    const [usernameErrorMessage, setUsernameErrorMessage] = useState<string>('')
+    const [passwordErrorMessage, setPasswordErrorMessage] = useState<string>('')
+    const [isUsernameValid, setIsUsernameValid] = useState<boolean>(false)
+    const [isPasswordValid, setIsPasswordValid] = useState<boolean>(false)
 
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || "/"
+    //MOVE VALIDATION METHODS INTO VALIDATION HELPER
     console.log('LOGIN FROM', from)
 
-    const userRef = useRef<HTMLInputElement>(null)
-    const errorRef = useRef<HTMLInputElement>(null)
-
-    const [username, setUsername] = useState('')
-    const [password, setpassword] = useState('')
-    const [errorMessage, setErrorMessage] = useState('')
+    useEffect(() => {
+        setUsernameErrorMessage('');
+    }, [username])
 
     useEffect(() => {
-        userRef.current && userRef.current.focus()
-    }, [])
+        setPasswordErrorMessage('');
+    }, [password])
 
-    useEffect(() => {
-        setErrorMessage('');
-    }, [username, password])
+    function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>){
+        setpassword(event.target.value)
+    }
+    
+    function handleUsernameChange(event: React.ChangeEvent<HTMLInputElement>){
+        setUsername(event.target.value);
+    }
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    function validateUsername(event: React.ChangeEvent<HTMLInputElement>){
+        if (event.target.value.trim() === '') {
+            setUsernameErrorMessage('User email is required');
+            setIsUsernameValid(false)
+            return false
+        } else if (!/^[A-Za-z0-9._%+-]{1,64}@(?:[A-Za-z0-9-]{1,63}\.){1,125}[A-Za-z]{2,63}$/.test(event.target.value)) {
+            setUsernameErrorMessage('Invalid email format')
+            setIsUsernameValid(false)
+            return false
+        } else {
+            setIsUsernameValid(true)
+            setUsernameErrorMessage('')
+            return true
+        }
+    }
+
+    function validatePassword(event: React.ChangeEvent<HTMLInputElement>){
+        if (event.target.value.trim() === "") {
+            setPasswordErrorMessage("Password is required.");
+            setIsPasswordValid(false)
+        } else {
+            setIsPasswordValid(true)
+            setPasswordErrorMessage("")
+        }
+      }
+      
+
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>){
+        event.preventDefault()
+
+        if(!isUsernameValid || !isPasswordValid)
+            return null
 
         try {
             const response = await axios.post(LOGIN_URL, { username, password })
-            console.log(JSON.stringify(response?.data))
-            //console.log(JSON.stringify(response));
             const accessToken = response?.data?.token
-            setAuth({ username, password, accessToken })
             setAuthToken(accessToken)
-            localStorage.setItem('token', accessToken);
-            setUsername('');
-            setpassword('');
-            navigate(from, { replace: true });
+            localStorage.setItem('token', accessToken)
+            navigate(from, { replace: true })
         } catch (error: any) {
             if (!error?.response) {
-                setErrorMessage('No Server Response');
+                setPasswordErrorMessage('No Server Response');
             } else if (error.response?.status === 400) {
-                setErrorMessage('Missing Username or Password');
+                setPasswordErrorMessage('Missing Username or Password');
             } else if (error.response?.status === 401) {
-                setErrorMessage('Unauthorized');
+                setPasswordErrorMessage('Unauthorized');
             } else {
-                setErrorMessage('Login Failed');
+                setPasswordErrorMessage('Login Failed');
             }
-            errorRef.current && errorRef.current.focus();
         }
     }
 
     return (
-
-        <section>
-            <p ref={errorRef} className={errorMessage ? "errmsg" : "offscreen"} aria-live="assertive">{errorMessage}</p>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    id="username"
-                    ref={userRef}
-                    autoComplete="off"
-                    onChange={(e) => setUsername(e.target.value)}
-                    value={username}
-                    required
-                />
-
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    onChange={(e) => setpassword(e.target.value)}
-                    value={password}
-                    required
-                />
-                <button>Sign In</button>
-            </form>
-        </section>
+        <LoginForm 
+            onSubmit={handleSubmit} 
+            username={username}
+            usernameLabel={'Email: *'}
+            usernameError= {usernameErrorMessage}
+            password={password}
+            passwordLabel={'Password: *'} 
+            passwordError= {passwordErrorMessage}
+            buttonLabel={'Login'} 
+            onPasswordChange={handlePasswordChange} 
+            onUsernameChange={handleUsernameChange} 
+            onValidateUsername={validateUsername} 
+            onValidatePassword={validatePassword }/>
 
     )
 }

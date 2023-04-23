@@ -1,8 +1,6 @@
 import { createContext, useState } from 'react'
 
 interface IAuthContext {
-    auth: any
-    setAuth: (auth: any) => void
     authToken: string
     setAuthToken: (auth: string) => void
 }
@@ -10,12 +8,11 @@ interface IAuthContext {
 const AuthContext = createContext<IAuthContext>(null!)
 
 function AuthProvider({ children } : { children: React.ReactNode }) {
-    const tokenString = localStorage.getItem('token');
-    const [auth, setAuth] = useState<any>({})
+    const tokenString = localStorage.getItem('token')
     const [authToken, setAuthToken] = useState<any>(tokenString)
     
     return(
-        <AuthContext.Provider value={{auth, setAuth, authToken, setAuthToken}}>
+        <AuthContext.Provider value={{authToken, setAuthToken}}>
             {children}
         </AuthContext.Provider>
     )

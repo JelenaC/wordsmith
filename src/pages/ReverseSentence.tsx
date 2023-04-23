@@ -1,28 +1,18 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import useAuth  from '../hooks/useAuth'
+import { SentenceConverter } from '../components/SentenceConverter'
+import styled from 'styled-components'
 
 function ReverseSentence() {
-
-  const { setAuthToken } = useAuth();
-  const { authToken } = useAuth()
-    console.log('Auth Token My Page ', authToken)
-
-  function logOut() {
-    setAuthToken('');
-    localStorage.setItem('token', '');
-  }
-
-
   return (
-    <div>
-      MyPage
-      <button onClick={logOut}>Log out</button>
-      <nav>
-        <Link to="/reverse-sentence">ReverseSentence</Link>
-        <Link to="/my-sentences">MySentences</Link>
-      </nav>
-    </div>
+    <ContentWrapper>
+      Let's reverse some sentences.. Whoho :)
+      <SentenceConverter></SentenceConverter>
+    </ContentWrapper>
   );
 }
 export { ReverseSentence }
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+`;
