@@ -40,11 +40,10 @@ Picture by [Kelly Sikkema](https://unsplash.com/@kellysikkema)
 - run `npm run start` to start the project and open it in your browser
 
 ## Status
-[Wordsmith] is still in progress.
+Wordsmith is still work in progress.
 
 ## Credits
-List of contributors:
-- [Jelena Cumbo](jelenacumbo@gmail.com)
+Author: [Jelena Cumbo](jelenacumbo@gmail.com)
 
 ## License
 MIT License
