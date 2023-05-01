@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { Logotype } from './Logotype'
 
 export type TNavLink = {
     name: string,
@@ -21,14 +22,14 @@ function Navigation({navLinks, isLoggedIn = false} : INavigation){
 
     return (
         <Nav>
-            <Logo>Logo</Logo>
+            <Logotype/>
             { isLoggedIn && 
                 <>
                     <NavLinks>
                         {navLinks.map((link) => (
-                            <NavLink key={link.name} to={link.url}>
+                            <NavigationLink key={link.name} to={link.url} className={(navData) => (navData.isActive ? 'active' : '')}>
                                 {link.name}
-                            </NavLink>
+                            </NavigationLink>
                         ))}
                     </NavLinks>
                     <HamburgerIcon onClick={toggleMenu}>
@@ -39,9 +40,9 @@ function Navigation({navLinks, isLoggedIn = false} : INavigation){
                     {showMobileMenu && (
                         <MobileNav>
                             {navLinks.map((link) => (
-                                <NavLink key={link.name} onClick={toggleMenu} to={link.url}>
+                                <NavigationLink key={link.name} onClick={toggleMenu} to={link.url}>
                                     {link.name}
-                                </NavLink>
+                                </NavigationLink>
                             ))}
                         </MobileNav>
                     )}
@@ -60,12 +61,11 @@ const Nav = styled.nav`
     padding: 0 1rem;
     justify-content: space-between;
     align-items: center;
-    background-color: #003E51;
+    background-color: #333a4e;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-`;
-
-const Logo = styled.div`
-    color: #DE9034;
+    @media (min-width: 48em) {
+        padding: 0 3rem;
+    }
 `;
 
 const NavLinks = styled.div`
@@ -76,12 +76,15 @@ const NavLinks = styled.div`
     }
 `;
 
-const NavLink = styled(Link)`
+const NavigationLink = styled(NavLink)`
     color: #FFFFFF;
     text-decoration: none;
     font-weight: 600;
     &:hover {
-        color: #DE9034;
+        color: #f0c661;
+    }
+    &.active {
+        color: #f0c661;
     }
 `;
 
@@ -115,6 +118,6 @@ const MobileNav = styled.div`
     align-items: center;
     gap: 2rem;
     padding-top: 2rem;
-    background: rgba(0,62,81, 0.9);
+    background: rgba(51, 58, 78, 0.9);
     z-index: 2;
 `;

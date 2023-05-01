@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Loader } from '../ui-components/Loader'
 import { Button } from '../ui-components/Button'
 import { Input } from '../ui-components/Input'
 import axios from '../api/axios'
@@ -75,10 +74,10 @@ const ContentWrapper = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 100%;
+    text-align: center;
     padding: 1rem;
     & > h1, & > h2, & > h3, & > p {
-        color: #003E51; 
+        color: #333a4e; 
     }
     @media (min-width: 48em) {
         width: 70%;
@@ -93,15 +92,18 @@ const SentenceWrapper = styled.div`
     margin: auto;
     gap: 1rem;
     width: 100%;
+    @media (min-width: 48em) {
+        width: 70%;
+        margin: 0 auto;
+    }
 `
 const ButtonWrapper = styled.div`
-    width:30%; 
     display: flex;
     gap: 0.5rem;
 `
 
 const SentenceInput = styled.div`
-    width:60%; 
+    flex: 1;
 `
 
 const ReversedSentence = styled.div`
@@ -109,7 +111,7 @@ const ReversedSentence = styled.div`
     box-sizing: content-box;
     border-radius: 0.25rem;
     padding: 0.5rem 1rem;
-    background: rgba(0, 62, 81, 0.1);
+    background: rgba(51,58,78, 0.1);
     font-size: 1rem;
     margin-top: 2rem;
 `

@@ -4,7 +4,6 @@ import styled from 'styled-components'
 function ReverseSentence() {
   return (
     <ContentWrapper>
-      Let's reverse some sentences.. Whoho :)
       <SentenceConverter></SentenceConverter>
     </ContentWrapper>
   );

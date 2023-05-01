@@ -68,32 +68,33 @@ const InputContainer = styled.div`
 `;
 
 const Label = styled.label`
+  text-align: left;
   margin-bottom: 0.5rem;
-  color: #003E51;
+  color: #333a4e;
   font-weight: bold;
 `;
 
 const UiInput = styled.input`
   box-sizing: border-box;
-  border: solid 0.063rem #DE9034;
+  border: solid 0.063rem #f0c661;
   border-radius: 0.25rem;
   padding: 0.5rem 1rem;
-  background: rgba(255, 196, 22, 0.1);
+  background: rgba(240, 198, 97, 0.1);
   font-size: 1rem;
   &:focus {
     outline: none;
-    box-shadow: 0 0 0.188rem #DE9034;
+    box-shadow: 0 0 0.188rem #f0c661;
   }
   &:focus-visible {
-    outline: 0.063rem solid rgba(255, 196, 22, 0.1);
-    box-shadow: 0 0 0.188rem #DE9034;
+    outline: 0.063rem solid rgba(240, 198, 97, 0.1);
+    box-shadow: 0 0 0.188rem #f0c661;
   }
 
   &:-webkit-autofill,
   &:-webkit-autofill:hover, 
   &:-webkit-autofill:focus, 
   &:-webkit-autofill:active{
-      -webkit-box-shadow: 0 0 0 30px rgba(255, 196, 22, 0.1) inset !important;
+      -webkit-box-shadow: 0 0 0 30px rgba(240, 198, 97, 0.1) inset !important;
       transition: background-color 600000s 0s, color 600000s 0s;
   }
 `

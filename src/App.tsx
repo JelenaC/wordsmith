@@ -1,5 +1,4 @@
 import { Login } from './pages/Login'
-import { Start } from './pages/Start'
 import { ReverseSentence } from './pages/ReverseSentence'
 import { Layout } from './pages/Layout'
 import { NotFound }  from './pages/NotFound'
@@ -18,13 +17,12 @@ function App() {
       <Route path="/" element={<Layout />}>
 
         {/* public routes */}
-        <Route path="/login" element={(authToken && authToken!=='') ? <Navigate to="/reverse-sentence" replace /> : <Login />}/>
-        <Route index element={<Start />} />
+        <Route path="/login" element={(authToken && authToken!=='') ? <Navigate to="/" replace /> : <Login />}/>
 
         {/* protected routes */}
         <Route element={<RequireAuth/>}>
           <Route index element={<ReverseSentence />} />
-          <Route path="reverse-sentence" element={<ReverseSentence />} />
+          <Route path="/" element={<ReverseSentence />} />
           <Route path="my-sentences" element={<MySentences />} />
           <Route path="my-profile" element={<MyProfile />} />
         </Route>

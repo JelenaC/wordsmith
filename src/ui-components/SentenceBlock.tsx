@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 export interface ISentenceBlock{
@@ -31,7 +31,7 @@ const UiSentenceBlock = styled.div`
 
 const Label = styled.label`
   margin-bottom: 0.5rem;
-  color: #003E51;
+  color: #333a4e;
   font-weight: bold;
 `;
 
@@ -39,7 +39,7 @@ const TextOriginal = styled.div`
 border: none;
 border-radius: 0.25rem;
 padding: 0.5rem 1rem;
-background: rgba(255, 196, 22, 0.1);
+background: rgba(240, 198, 97, 0.2);
 font-size: 1rem;
 &:focus {
   outline: none;
@@ -50,7 +50,7 @@ const TextReversed = styled.div`
 border: none;
 border-radius: 0.25rem;
 padding: 0.5rem 1rem;
-background: rgba(0, 62, 81, 0.1);
+background: rgba(90, 221, 138, 0.2);
 font-size: 1rem;
 &:focus {
   outline: none;

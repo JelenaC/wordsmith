@@ -50,7 +50,7 @@ const [infoMessage, setInfoMessage] = useState<string>('')
   }
 
   if(loading)
-  return <Sentences>My saved sentences: <Loader/> </Sentences>
+  return <LoaderWrapper>Loading sentences: <Loader/> </LoaderWrapper>
 
   if(sentences.length===0)
     return <NoSentencesMessage>{infoMessage}</NoSentencesMessage>
@@ -72,14 +72,28 @@ const [infoMessage, setInfoMessage] = useState<string>('')
 }
 export { MySentences }
 
+const LoaderWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem; 
+  gap: 2rem;
+  font-weight: bold;
+}
+`
+
 const Sentences = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 2rem 1rem;
-    position: relative;
-    @media (min-width: 48em) {
-      width: 70%;
-      margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 1rem;
+  position: relative;
+  @media (min-width: 48em) {
+    width: 70%;
+    margin: 0 auto;
+  }
+  @media (min-width: 64em) {
+    width: 50%;
+    margin: 0 auto;
   }
 `
 

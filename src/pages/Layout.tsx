@@ -8,7 +8,7 @@ function Layout() {
   const { authToken } = useAuth()
   const userIsLoggedIn = authToken && authToken!=='' ? true : false
   const links = [
-    { name: 'Lets Reverse', url: '/reverse-sentence'},    
+    { name: 'Lets Reverse', url: '/'},    
     { name: 'My reversed', url: '/my-sentences' },    
     { name: 'My profile', url: '/my-profile' } 
   ]

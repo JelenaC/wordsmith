@@ -74,7 +74,7 @@ const FormContainer = styled.form`
   align-items: center;
   margin: 1rem;
   width: calc(100% - 2rem);
-  border: 0.063rem solid rgba(0, 62, 81, 0.5);
+  border: 0.063rem solid rgba(51, 58, 78, 0.5);
   border-radius: 0.25rem;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   padding: 3rem 0;

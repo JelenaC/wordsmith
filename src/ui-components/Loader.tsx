@@ -37,7 +37,7 @@ const LoaderDot = styled.div`
     height: 1rem;
     margin: 0.188rem 0.375;
     border-radius: 50%;
-    background-color: #003E51;
+    background-color: #333a4e;
     opacity: 1;
     animation: ${loaderAnimation} 0.6s infinite alternate; 
 `
