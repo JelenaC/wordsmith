@@ -19,30 +19,29 @@ function Login() {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || "/"
-    //TODO: MOVE VALIDATION METHODS INTO VALIDATION HELPER
 
     useEffect(() => {
-        setUsernameErrorMessage('');
+        setUsernameErrorMessage('')
     }, [username])
 
     useEffect(() => {
-        setPasswordErrorMessage('');
+        setPasswordErrorMessage('')
     }, [password])
-
-    function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>){
-        setPassword(event.target.value)
-    }
     
     function handleUsernameChange(event: React.ChangeEvent<HTMLInputElement>){
         setUsername(event.target.value);
     }
 
-    function validateUsername(event: React.ChangeEvent<HTMLInputElement>){
-        if (event.target.value.trim() === '') {
+    function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>){
+        setPassword(event.target.value)
+    }
+
+    function validateUsername(value: string){
+        if (value.trim() === '') {
             setUsernameErrorMessage('User email is required');
             setIsUsernameValid(false)
             return false
-        } else if (!/^[A-Za-z0-9._%+-]{1,64}@(?:[A-Za-z0-9-]{1,63}\.){1,125}[A-Za-z]{2,63}$/.test(event.target.value)) {
+        } else if (!/^[A-Za-z0-9._%+-]{1,64}@(?:[A-Za-z0-9-]{1,63}\.){1,125}[A-Za-z]{2,63}$/.test(value)) {
             setUsernameErrorMessage('Invalid email format')
             setIsUsernameValid(false)
             return false
@@ -53,8 +52,8 @@ function Login() {
         }
     }
 
-    function validatePassword(event: React.ChangeEvent<HTMLInputElement>){
-        if (event.target.value.trim() === "") {
+    function validatePassword(value: string){
+        if (value.trim() === "") {
             setPasswordErrorMessage("Password is required.");
             setIsPasswordValid(false)
         } else {
@@ -66,10 +65,14 @@ function Login() {
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault()
-
-        if(!isUsernameValid || !isPasswordValid)
+        if(!isUsernameValid){
+            validateUsername(username)
             return null
-
+        }
+        if(!isPasswordValid){
+            validatePassword(password)
+            return null
+        }
         try {
             const response = await axios.post(LOGIN_URL, { username, password })
             const accessToken = response?.data?.token
@@ -105,8 +108,8 @@ function Login() {
                 buttonLabel={'Login'} 
                 onPasswordChange={handlePasswordChange} 
                 onUsernameChange={handleUsernameChange} 
-                onValidateUsername={validateUsername} 
-                onValidatePassword={validatePassword }/>
+                onValidateUsername={()=>validateUsername(username)} 
+                onValidatePassword={()=>validatePassword(password) }/>
         </ContentWrapper>
     )
 }
@@ -118,7 +121,6 @@ const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
     padding: 1rem;
     & > h1, & > h3, & > p {
         color: #333a4e; 

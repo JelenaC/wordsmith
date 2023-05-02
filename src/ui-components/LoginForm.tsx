@@ -39,7 +39,7 @@ function LoginForm({
   }, [])
   
   return (  
-    <FormContainer onSubmit={onSubmit}>
+    <FormContainer onSubmit={onSubmit} noValidate>
       <Input
         ref={usernameInput} 
         label={usernameLabel}
@@ -79,11 +79,11 @@ const FormContainer = styled.form`
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   padding: 3rem 0;
   @media (min-width: 48em) {
-    width: 50%;
+    width: 60%;
     padding: 3rem;
     margin: 2rem auto;
   }
   @media (min-width: 64em) {
-    width: 35%;
+    width: 60%;
   }
 `;
