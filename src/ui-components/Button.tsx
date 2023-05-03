@@ -6,12 +6,11 @@ export type TButtonType = 'submit' | 'button'
 export interface IButton {
   children: React.ReactNode
   type: TButtonType
-  className?: string
   disabled?: boolean
   onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-const Button = forwardRef<HTMLButtonElement, IButton>(({type = 'button', children, disabled, onClick, className }, ref ) => {
+const Button = forwardRef<HTMLButtonElement, IButton>(({type = 'button', children, disabled, onClick }, ref ) => {
     if(!children)
       return null
 

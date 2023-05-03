@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 
 export interface ISentenceBlock{
@@ -9,19 +8,17 @@ export interface ISentenceBlock{
 }
 
 function SentenceBlock ({ sentenceLabel, sentence, reversedLabel, reversed } : ISentenceBlock){
-
-    return (
-      <UiSentenceBlock>
-      <Label>{sentenceLabel}</Label>
-      <TextOriginal>{sentence}</TextOriginal>
-      <Label>{reversedLabel}</Label>
-      <TextReversed>{reversed}</TextReversed>
-    </UiSentenceBlock>
-    )
-  }
+  return (
+    <UiSentenceBlock>
+    <Label>{sentenceLabel}</Label>
+    <TextOriginal>{sentence}</TextOriginal>
+    <Label>{reversedLabel}</Label>
+    <TextReversed>{reversed}</TextReversed>
+  </UiSentenceBlock>
+  )
+}
 
 export { SentenceBlock }
-
 
 const UiSentenceBlock = styled.div`
   display: flex;

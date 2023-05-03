@@ -6,7 +6,6 @@ Access the site at [jelenac.github.io/wordsmith](https://jelenac.github.io/words
 ## Table of Content:
 
 - [About Wordsmith](#about-wordsmith)
-- [Screenshots](#screenshots)
 - [Technologies used](#technologies-used)
 - [Setup](#prerequisites)
 - [Setup](#setup)
@@ -17,16 +16,13 @@ Access the site at [jelenac.github.io/wordsmith](https://jelenac.github.io/words
 ## About Wordsmith
 Wordsmith is a web app that allows the user to reverse the sentences. The user can reverse the sentences, save the revesed sentences, retreive the saved sentences and order them to their home address. In order to perform the above mentioned actions the user needs to be logged in first.  
 
-## Screenshots
-
-`![Writing](https://unsplash.com/photos/VBPzRgd7gfc)`
-
-Picture by [Kelly Sikkema](https://unsplash.com/@kellysikkema)
-
 ## Technologies used
 - typescript
 - reactjs 
 - styled components
+- axios
+- jest 
+- react testing library
 
 ## Prerequisites
 - Node - you’ll need to have Node >= 14 on your local development machine (but it’s not required on the server). You can use nvm (macOS/Linux) or nvm-windows to switch Node versions between different projects

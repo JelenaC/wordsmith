@@ -1,8 +1,6 @@
-import React from 'react'
 import { Outlet } from 'react-router-dom'
 import useAuth from '../hooks/useAuth';
 import { Navigation } from '../ui-components/Navigation'
-
 
 function Layout() {
   const { authToken } = useAuth()

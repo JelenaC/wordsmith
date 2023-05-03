@@ -4,18 +4,18 @@ import { Button } from "./Button";
 import { Input } from "./Input";
 
 interface ILoginForm {
-    usernameLabel: string
-    username?: string
-    passwordLabel: string
-    password?: string
-    usernameError?: string
-    passwordError?: string
-    buttonLabel: string
-    onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
-    onUsernameChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-    onPasswordChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-    onValidateUsername: (event: React.ChangeEvent<HTMLInputElement>) => void
-    onValidatePassword: (event: React.ChangeEvent<HTMLInputElement>) => void
+  usernameLabel: string
+  username?: string
+  passwordLabel: string
+  password?: string
+  usernameError?: string
+  passwordError?: string
+  buttonLabel: string
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
+  onUsernameChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onPasswordChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onValidateUsername: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onValidatePassword: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 function LoginForm({

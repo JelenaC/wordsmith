@@ -3,16 +3,12 @@ import useAuth  from '../hooks/useAuth'
 import { Button } from '../ui-components/Button';
 
 function MyProfile() {
-
-  const { setAuthToken } = useAuth();
-  const { authToken } = useAuth()
-    console.log('Auth Token My Page ', authToken)
+  const { setAuthToken } = useAuth()
 
   function logOut() {
     setAuthToken('');
     localStorage.setItem('token', '');
   }
-
 
   return (
     <ContentWrapper>

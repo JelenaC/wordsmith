@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components';
 import axios from '../api/axios'
 import { Loader } from '../ui-components/Loader'
@@ -14,10 +14,9 @@ export type TSentence = {
 }
 
 function MySentences() {
-
-const [sentences, setSentences] = useState<TSentence[]>([])
-const [loading, setLoading] = useState<boolean>(true)
-const [infoMessage, setInfoMessage] = useState<string>('')
+  const [sentences, setSentences] = useState<TSentence[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [infoMessage, setInfoMessage] = useState<string>('')
 
   useEffect(() => {
     getSentences()
@@ -31,26 +30,20 @@ const [infoMessage, setInfoMessage] = useState<string>('')
     try {
       setLoading(true);
         const response = await axios.get(GET_SENTENCES_URL, config)
-        console.log(JSON.stringify(response?.data))
         const result = response?.data
-        // setTimeout(() => {
-        //   setLoading(false)
-        // result.length > 0 ? setSentences(result) : setInfoMessage('You do not have any saved reversed sentences')
-        // }, 4000)
         setLoading(false)
-        result.length > 0 ? setSentences(result) : setInfoMessage('You do not have any saved reversed sentences')
-        
+        result.length > 0 ? setSentences(result) : setInfoMessage('You do not have any saved reversed sentences')    
     } catch (error: any) {
         if (error.response?.status === 401) {
-          setInfoMessage('Unauthorized');
+          setInfoMessage('This account is unauthorized')
       } else {
-          setInfoMessage('Fetch sentences failed');
+          setInfoMessage('Fetch sentences failed')
       }
     }
   }
 
   if(loading)
-  return <LoaderWrapper>Loading sentences: <Loader/> </LoaderWrapper>
+    return <LoaderWrapper>Loading sentences: <Loader/> </LoaderWrapper>
 
   if(sentences.length===0)
     return <NoSentencesMessage>{infoMessage}</NoSentencesMessage>
@@ -68,7 +61,7 @@ const [infoMessage, setInfoMessage] = useState<string>('')
           )}
         </SentencesList>
     </Sentences>
-  );
+  )
 }
 export { MySentences }
 

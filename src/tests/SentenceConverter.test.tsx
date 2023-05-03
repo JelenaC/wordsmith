@@ -1,7 +1,6 @@
-import React from "react";
-import { fireEvent, render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
-import { SentenceConverter, reverseString } from "../components/SentenceConverter";
+import { fireEvent, render, screen } from "@testing-library/react"
+import "@testing-library/jest-dom"
+import { ReverseSentence, reverseString } from "../pages/ReverseSentence"
 
 describe("Sentence Converter Method Test", () => { 
     test ("Given a string, should return reversed string", ()=>{
@@ -31,13 +30,13 @@ describe("Sentence Converter Method Test", () => {
 
 describe("Sentence Converter Component Test", () => { 
     test ("Given a user input, and clicking on button should return reversed string", ()=>{
-        render(<SentenceConverter/>);
+        render(<ReverseSentence/>);
         const input = screen.getByLabelText('Type sentence')
         fireEvent.change(input, {target: {value: 'Hello there'}})
         expect(input).toHaveValue('Hello there')
-        const reverseButton = screen.getByText(/Reverse/i)
+        const reverseButton = screen.getByText('Reverse')
         fireEvent.click(reverseButton)
-        const updatedHeading = screen.getByRole("heading")
-        expect(updatedHeading).toHaveTextContent(/olleH ereht/i)
+        const reversedSentence = screen.getByTestId("revSentence")
+        expect(reversedSentence).toHaveTextContent(/olleH ereht/i)
     })
-});
+})

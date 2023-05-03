@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/wordsmith">
+    <BrowserRouter basename="/wordsmith/">
       <AuthProvider>
         <Routes>
           <Route path="/*" element={<App />} />
